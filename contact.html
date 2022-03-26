@@ -111,7 +111,7 @@
 
           <div class="col-lg-8 mt-5 mt-lg-0">
 
-            <form method="post" action="forms/contact.php" role="form" id="contact-form" class="php-email-form">
+            <form role="form" id="gform" class="contact-form">
               <div class="row">
                 <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name">
@@ -163,7 +163,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
   <script src="/assets/js/validate.js"></script>
+  <script>
+    $("#gform").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbyrEQZmwHLCguny264L7Ha6H2rpmroTylWuftao1BJ5k9TxhlcGeqA5aJpnGQdLpWMH/exec",
+            data:$("#gform").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload();
+            },
+            error:function (err){
+                alert("Something Error")
 
+            }
+        })
+    })
+  </script>
 
   <script src="assets/vendor/purecounter/purecounter.js"></script>
   <script src="assets/vendor/aos/aos.js"></script>
